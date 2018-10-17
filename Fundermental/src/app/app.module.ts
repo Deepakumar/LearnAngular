@@ -6,13 +6,15 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { EventsListComponent } from './events/events-list.component';
 import { EventThumbnailcomponent} from './events/event-thumbnail.component';
+import { NavBarComponent} from './nava/navbar.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     EventsListComponent,
-    EventThumbnailcomponent
+    EventThumbnailcomponent,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,
