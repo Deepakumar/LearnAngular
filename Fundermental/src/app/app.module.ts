@@ -4,17 +4,21 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { EventsListComponent } from './events/events-list.component';
-import { EventThumbnailcomponent} from './events/event-thumbnail.component';
 import { NavBarComponent} from './nava/navbar.component';
-import { EventService } from './events/shared/event.service'
 import { ToastrService } from './common/toastr.service';
 import { appRoutes} from './routes'
 import { RouterModule, Routes } from '@angular/router';
-import { EventDetailsComponent } from './events/event-details/event-details.component';
-import { CreateEventComponent } from './events/create-event.component';
 import { Error404Component } from './errors/404.component';
-import { EventRouteActivator } from './events/event-details/event.route.activator';
+
+import {
+  EventsListComponent,
+  EventThumbnailcomponent,
+  EventService,
+  EventDetailsComponent,
+  CreateEventComponent,
+  EventRouteActivator,
+  EventListResolver
+} from './events/index'
 
 
 
@@ -39,7 +43,8 @@ import { EventRouteActivator } from './events/event-details/event.route.activato
     EventService,
     ToastrService,
     EventRouteActivator,
-    {provide:'canDeactivateEvent', useValue : checkdirtyState}
+    {provide:'canDeactivateEvent', useValue : checkdirtyState},
+    EventListResolver
   ],
   bootstrap: [AppComponent]
 })
