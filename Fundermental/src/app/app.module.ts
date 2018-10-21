@@ -9,6 +9,7 @@ import { ToastrService } from './common/toastr.service';
 import { appRoutes} from './routes'
 import { RouterModule, Routes } from '@angular/router';
 import { Error404Component } from './errors/404.component';
+import { AuthService } from './user/auth.service';
 
 import {
   EventsListComponent,
@@ -18,7 +19,8 @@ import {
   CreateEventComponent,
   EventRouteActivator,
   EventListResolver
-} from './events/index'
+} from './events/index';
+
 
 
 
@@ -30,8 +32,7 @@ import {
     NavBarComponent,
     EventDetailsComponent,
     CreateEventComponent,
-    Error404Component
-    
+    Error404Component   
   ],
   imports: [
     BrowserModule,
@@ -43,8 +44,9 @@ import {
     EventService,
     ToastrService,
     EventRouteActivator,
-    {provide:'canDeactivateEvent', useValue : checkdirtyState},
-    EventListResolver
+    {provide: 'canDeactivateEvent', useValue : checkdirtyState},
+    EventListResolver,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })
@@ -52,7 +54,7 @@ export class AppModule { }
 
 export function checkdirtyState(component: CreateEventComponent) {
   if(component.isdirty) {
-    return window.confirm('you have not save this event, do you want to cancel?')
+    return window.confirm('you have not save this event, do you want to cancel?');
   }
   else {
     return true;    
