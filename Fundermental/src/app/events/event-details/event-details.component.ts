@@ -13,7 +13,7 @@ import { IEvent } from "../shared/event.model";
 })
 export class EventDetailsComponent implements OnInit {
     event: IEvent;
-    constructor(private eventService:EventService, private route:ActivatedRoute) {
+    constructor(private eventService: EventService, private route:ActivatedRoute) {
 
     }
     ngOnInit(): void {
