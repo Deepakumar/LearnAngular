@@ -5,7 +5,7 @@ import { IEvent } from './shared/event.model';
     selector : 'event-thumbnail',
     template: `
     <div [routerLink]="['/events',event.id]" class="well hoverwell thumbnail">
-        <h2>{{event.name}}</h2>
+        <h2>{{event.name | uppercase}}</h2>
         <div>
         <div>Date: {{event.date}}</div>
         <div>Time: {{event.time}}</div>

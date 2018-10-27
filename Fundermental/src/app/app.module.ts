@@ -1,15 +1,17 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { NavBarComponent} from './nava/navbar.component';
-import { ToastrService } from './common/toastr.service';
+// import { ToastrService } from './common/toastr.service';
 import { appRoutes} from './routes'
 import { RouterModule, Routes } from '@angular/router';
 import { Error404Component } from './errors/404.component';
 import { AuthService } from './user/auth.service';
+import { CollasibleComponent} from './common/collapsible-well.component';
+import { TOASTER_TOKEN, Toastr} from './common/toastr.service';
 
 import {
   EventsListComponent,
@@ -18,11 +20,14 @@ import {
   EventDetailsComponent,
   CreateEventComponent,
   EventRouteActivator,
-  EventListResolver
+  EventListResolver,
+  CreateSessionComponent,
+  SessionListComponent,
+  DurationPipe
 } from './events/index';
 
 
-
+let toastr: Toastr = window['toaster'];
 
 @NgModule({
   declarations: [
@@ -32,17 +37,26 @@ import {
     NavBarComponent,
     EventDetailsComponent,
     CreateEventComponent,
-    Error404Component   
+    Error404Component,
+    CreateSessionComponent,
+    SessionListComponent,
+    CollasibleComponent,
+    DurationPipe
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [
     EventService,
-    ToastrService,
+    // ToastrService,
+    {
+      provide: TOASTER_TOKEN,
+      useValue: toastr
+    },
     EventRouteActivator,
     {provide: 'canDeactivateEvent', useValue : checkdirtyState},
     EventListResolver,
