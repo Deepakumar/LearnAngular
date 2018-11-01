@@ -5,13 +5,14 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { NavBarComponent} from './nava/navbar.component';
-// import { ToastrService } from './common/toastr.service';
-import { appRoutes} from './routes'
+import { TOASTER_TOKEN, Toastr } from './common/toastr.service';
+import { appRoutes} from './routes';
 import { RouterModule, Routes } from '@angular/router';
 import { Error404Component } from './errors/404.component';
 import { AuthService } from './user/auth.service';
 import { CollasibleComponent} from './common/collapsible-well.component';
-import { TOASTER_TOKEN, Toastr} from './common/toastr.service';
+
+declare let toastr: Toastr;
 
 import {
   EventsListComponent,
@@ -25,9 +26,6 @@ import {
   SessionListComponent,
   DurationPipe
 } from './events/index';
-
-
-let toastr: Toastr = window['toaster'];
 
 @NgModule({
   declarations: [
@@ -52,11 +50,7 @@ let toastr: Toastr = window['toaster'];
   ],
   providers: [
     EventService,
-    // ToastrService,
-    {
-      provide: TOASTER_TOKEN,
-      useValue: toastr
-    },
+    { provide: TOASTER_TOKEN, useValue: toastr},
     EventRouteActivator,
     {provide: 'canDeactivateEvent', useValue : checkdirtyState},
     EventListResolver,
@@ -71,6 +65,6 @@ export function checkdirtyState(component: CreateEventComponent) {
     return window.confirm('you have not save this event, do you want to cancel?');
   }
   else {
-    return true;    
+    return true;
   }
 }
