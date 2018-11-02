@@ -1,3 +1,4 @@
+import { ReflectiveInjector } from '@angular/core';
 import { InjectionToken } from '@angular/core';
 
 export let TOASTER_TOKEN = new InjectionToken<Toastr>('toaster');
@@ -7,5 +8,5 @@ export interface Toastr {
     info(msg: string, title?: string): void;
     warning(msg: string, title?: string): void;
     error(msg: string, title?: string): void;
-}
+};
 
