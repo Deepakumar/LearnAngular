@@ -1,68 +1,22 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
-import { HttpModule } from '@angular/http';
 
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavBarComponent} from './nava/navbar.component';
-// import { ToastrService } from './common/toastr.service';
-import { appRoutes} from './routes'
-import { RouterModule, Routes } from '@angular/router';
-import { Error404Component } from './errors/404.component';
-import { AuthService } from './user/auth.service';
-import { CollasibleComponent} from './common/collapsible-well.component';
-
-import {
-  EventsListComponent,
-  EventThumbnailcomponent,
-  EventService,
-  EventDetailsComponent,
-  CreateEventComponent,
-  EventRouteActivator,
-  EventListResolver,
-  CreateSessionComponent,
-  SessionListComponent,
-  DurationPipe
-} from './events/index';
+import { EventsListComponent } from './events/event-list.component';
+import { EventThumbnailComponent } from './events/event-thumbnail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     EventsListComponent,
-    EventThumbnailcomponent,
-    NavBarComponent,
-    EventDetailsComponent,
-    CreateEventComponent,
-    Error404Component,
-    CreateSessionComponent,
-    SessionListComponent,
-    CollasibleComponent,
-    DurationPipe
+    EventThumbnailComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpModule,
-    RouterModule.forRoot(appRoutes)
+    AppRoutingModule
   ],
-  providers: [
-    EventService,
-    // ToastrService,
-    EventRouteActivator,
-    {provide: 'canDeactivateEvent', useValue : checkdirtyState},
-    EventListResolver,
-    AuthService
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-
-export function checkdirtyState(component: CreateEventComponent) {
-  if(component.isdirty) {
-    return window.confirm('you have not save this event, do you want to cancel?');
-  }
-  else {
-    return true;    
-  }
-}
