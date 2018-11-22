@@ -5,7 +5,6 @@ import { map } from "rxjs/operators"
 
 @Injectable()
 export class EventListResolver implements Resolve<any> {
-
     constructor(private eventService:EventService) {
 
     }
