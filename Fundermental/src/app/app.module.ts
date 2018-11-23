@@ -7,6 +7,7 @@ import { ToastrService } from './common/toastr.service';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from './routes';
 import { Error404Component } from './errors/404.component';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms'
 // import { EventsListComponent} from './events/event-list.component';
 // import { EventThumbnailComponent} from './events/event-thumbnail.component';
 // import { EventService} from './events/shared/event.service';
@@ -39,7 +40,8 @@ import { AuthService } from './user/auth.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    FormsModule
   ],
   providers: [
     EventService,
