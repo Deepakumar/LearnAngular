@@ -17,7 +17,7 @@ import { FormsModule} from '@angular/forms';
         LoginComponent
     ],
     providers: [
-
+        
     ]
 })
 export class UserModule {}
