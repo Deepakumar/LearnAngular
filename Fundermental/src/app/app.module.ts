@@ -3,13 +3,12 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav/navbar.component';
-import { TOASTR_TOKEN, Toastr } from './common/toastr.service';
+import { JQ_TOKEN, TOASTR_TOKEN, Toastr, CollapsibleWellComponent } from './common/index';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from './routes';
 import { Error404Component } from './errors/404.component';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms'
 import { AuthService } from './user/auth.service';
-import { CollapsibleWellComponent} from './common/collapsible-well.component'
 import {
   EventsListComponent,
   EventThumbnailComponent,
@@ -23,7 +22,8 @@ import {
   DurationPipe
 } from './events/index'
 
-declare let toastr:Toastr
+let toastr:Toastr = window['toastr'];
+let jQuery = window['$'];
 
 
 @NgModule({
