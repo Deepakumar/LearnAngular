@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav/navbar.component';
-import { JQ_TOKEN, TOASTR_TOKEN, Toastr, CollapsibleWellComponent } from './common/index';
+import { JQ_TOKEN, TOASTR_TOKEN, Toastr, CollapsibleWellComponent, SimpleModelComponent } from './common/index';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from './routes';
 import { Error404Component } from './errors/404.component';
@@ -38,7 +38,8 @@ let jQuery = window['$'];
     CreateSessionComponent,
     SessionListComponent,
     CollapsibleWellComponent,
-    DurationPipe
+    DurationPipe,
+    SimpleModelComponent
   ],
   imports: [
     BrowserModule,
@@ -50,6 +51,7 @@ let jQuery = window['$'];
   providers: [
     EventService,
     {provide:TOASTR_TOKEN, useValue:toastr},
+    {provide:JQ_TOKEN, useValue:jQuery},
     EventRouteActivator,
     EventListResolver,
     AuthService,
