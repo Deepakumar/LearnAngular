@@ -34,7 +34,7 @@
           <div class="form-group">
             <input type="text" class="form-control" placeholder="Search Sessions" [(ngModel)]="searchTerm" type="text" name="searchTerm" >
           </div>
-          <button class="btn btn-default" >
+          <button class="btn btn-default" modal-trigger="searchResult">
             Search
           </button>
         </form>
@@ -42,10 +42,10 @@
     </div>
   </div>
 
-  <simple-model title="Matching Sessions">
+  <simple-modal title="Matching Sessions" elementId="searchResult" closeOnBodyClick="true">
       <div class="list-group">
         <a class="list-group-item" *ngFor="let session of foundSessions" [routerLink]="['/events',session.eventId]">
           {{session.name}}
         </a>
       </div>
-  </simple-model>
+  </simple-modal>
