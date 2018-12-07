@@ -9,7 +9,6 @@ import { appRoutes } from './routes';
 import { Error404Component } from './errors/404.component';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms'
 import { AuthService } from './user/auth.service';
-import { VoterService} from './events/event-details/voter.service'
 import {
   EventsListComponent,
   EventThumbnailComponent,
@@ -21,7 +20,8 @@ import {
   CreateSessionComponent,
   SessionListComponent,
   DurationPipe,
-  UpVotingComponent
+  UpVotingComponent,
+  VoterService
 } from './events/index'
 
 let toastr:Toastr = window['toastr'];

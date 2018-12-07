@@ -14,8 +14,8 @@ export class SessionListComponent implements OnChanges {
     @Input() sortBy: string
     visiblesessions: ISession[];
 
-    constructor(private auth:AuthService,private voterService:VoterService) {}
-//private voterService:VoterService
+
+    constructor(public auth:AuthService,private voterService:VoterService) {}
     ngOnChanges() 
     {
         if(this.sessions) {
@@ -25,30 +25,30 @@ export class SessionListComponent implements OnChanges {
     }
 
     toggleVote(session: ISession) {
-        // if(this.userHasVoted(session)) {
-        //     //this.voterService.deleteVoter(session,this.auth.currentUser.userName);
-        // }
-        // else {
-        //     //this.voterService.addVoter(session, this.auth.currentUser.userName);
-        // }
+        if(this.userHasVoted(session)) {
+            this.voterService.deleteVoter(session,this.auth.currentUser.userName);
+        }
+        else {
+            this.voterService.addVoter(session, this.auth.currentUser.userName);
+        }
 
-        // if(this.sortBy === 'votes') {
-        //     //this.visiblesessions.sort(sortByVotesDesc);
-        // }
+        if(this.sortBy === 'votes') {
+            this.visiblesessions.sort(sortByVotesDesc);
+        }
     }
 
     userHasVoted(session: ISession)  {
-        //return this.voterService.userHasVoted(session, this.auth.currentUser.userName);
+        return this.voterService.userHasVoted(session, this.auth.currentUser.userName);
     }
 
     filterSessions(filter) {
-        // if(filter === 'all'){
-        //     this.visiblesessions = this.sessions.slice(0);
-        // }else {
-        //     this.visiblesessions = this.sessions.filter(session=> {
-        //         return session.level.toLocaleLowerCase() === filter;
-        //     })
-        // }
+        if(filter === 'all'){
+            this.visiblesessions = this.sessions.slice(0);
+        }else {
+            this.visiblesessions = this.sessions.filter(session=> {
+                return session.level.toLocaleLowerCase() === filter;
+            })
+        }
     }
 }
 
